@@ -9,6 +9,59 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="Menu.js"></script>
+	<script>
+      //draggable = "true" --> Elemento pueda moverse
+      //ondrastar --> llama a la funcion drop(event)
+      //ondragover --> llama a la funcion allowDrop(event)
+      function drag(ev) {
+      //establece el tipo de dato y valor del elemento capturado, en este caso el valor del atributo id
+         ev.dataTransfer.setData("text", ev.target.id); 
+         ev.effectAllowed = "copyMove";
+      }
+
+      function allowDrop(ev) {
+          ev.preventDefault(); //Evitar la manipulación del navegador de los datos.
+      }
+
+      function drop(ev) {
+       ev.preventDefault();
+       var id = ev.dataTransfer.getData("text");
+       if (id=="1"){
+         var nodeCopy = document.getElementById(id).cloneNode(true);
+            nodeCopy.id = "1";
+            ev.target.appendChild(nodeCopy);
+       }else if (id=="2"){
+         var nodeCopy = document.getElementById(id).cloneNode(true);
+            nodeCopy.id = "2";
+            ev.target.appendChild(nodeCopy);
+       }else if (id=="3"){
+         var nodeCopy = document.getElementById(id).cloneNode(true);
+            nodeCopy.id = "3";
+            ev.target.appendChild(nodeCopy);
+       }
+          Pedido();
+      }
+      
+
+
+      function Pedido(){
+         var Producto = document.getElementsByClassName("juegos");
+         
+         for(var i=0;i<Producto.length; i++){
+            if(Producto[i].getAttribute("id")==1){
+               document.getElementById("resultado").innerHTML = "Compra juego = Splatoon 2"; 
+
+            }else if (Producto[i].getAttribute("id")==2){
+               document.getElementById("resultado").innerHTML = "Compra juego = Super Mario Odyssey"; 
+
+            }else if (Producto[i].getAttribute("id")==3){
+               document.getElementById("resultado").innerHTML = "Compra juego = Zelda Breath of Wild ";  
+
+            }
+         }
+      }
+      
+   </script>
 </head>
 <body id="viewport">
 	<header>
@@ -31,39 +84,41 @@
 			<section id="icono1">
 				<img src="Producto/icono1.jpg" id="icono1">	
 			</section>
+         <!--para hacer que un elemento sea arrastrable draggable="true" -->
 
 			<figure class="responsive">
-      			<img src="Producto/descarga.jpg" alt="Splatoon 2" >
-   				 <figcaption>Nintendo Switch Splatoon 2</figcaption>
-   				 <figcaption>Q.699.00</figcaption>
-   			 </figure>
-	
-			<figure class="responsive">
-      			<img src="Producto/descarga1.jpg" alt="Super Mario Odyssey" >
-   				 <figcaption>Nintendo Switch Super Mario Odyssey</figcaption>
-   				 <figcaption>Q.699.00</figcaption>
-   			 </figure>
+            <img name="100" id ="1" class="juegos" src="Producto/descarga.jpg" alt="Splatoon 2" draggable="true" 
+            ondragstart="drag(event)">
+            <figcaption>Nintendo Switch Splatoon 2</figcaption>
+            <figcaption>Q.699.00</figcaption>
+         </figure>
+   
+         <figure class="responsive">
+          <img  name="2" class="juegos" id ="2" src="Producto/descarga1.jpg" alt="Super Mario Odyssey" draggable="true"     ondragstart="drag(event)" >
+            <figcaption>Nintendo Switch Super Mario Odyssey</figcaption>
+            <figcaption>Q.699.00</figcaption>
+         </figure>
+
+         <figure class="responsive">
+               <img  name="3" class="juegos" id ="3" src="Producto/descarga2.jpg" alt="Zelda Breath of Wild" draggable="true"    ondragstart="drag(event)">
+                  <figcaption>Nintendo Switch Zelda Breath of Wild</figcaption>
+                  <figcaption>Q.699.00</figcaption>
+         </figure>
 
 			<figure class="responsive">
-      			<img src="Producto/descarga2.jpg" alt="Zelda Breath of Wild" >
-   				 <figcaption>Nintendo Switch Zelda Breath of Wild</figcaption>
-   				 <figcaption>Q.699.00</figcaption>
-   			 </figure>
-
-			<figure class="responsive">
-      			<img src="Producto/descarga3.jpg" alt="Super Smash Bros Ultimate" >
+      			<img  id ="4" src="Producto/descarga3.jpg" alt="Super Smash Bros Ultimate" >
    				 <figcaption>Nintendo Switch Super Smash Bros Ultimate</figcaption>
    				 <figcaption>Q.699.00</figcaption>
    			 </figure>
 
 			<figure class="responsive">
-      			<img src="Producto/descarga4.jpg" alt="Dragon Ball 2 Xenoverse" >
+      			<img id ="5" src="Producto/descarga4.jpg" alt="Dragon Ball 2 Xenoverse" >
    				 <figcaption>Nintendo Switch Dragon Ball 2 Xenoverse</figcaption>
    				 <figcaption>Q.699.00</figcaption>
    			 </figure>
 
    			 <figure class="responsive">
-      			<img src="Producto/descarga5.jpg" alt="Pokemon Let's Go Pikachu" >
+      			<img id ="6" src="Producto/descarga5.jpg" alt="Pokemon Let's Go Pikachu" >
    				 <figcaption>Nintendo Switch Pokemon Let's Go Pikachu</figcaption>
    				 <figcaption>Q.629.00</figcaption>
    			 </figure>
@@ -75,46 +130,49 @@
 			</section>
 
 			<figure class="responsive">
-      			<img src="Producto/ps1.jpg" alt="Batman Arkham" >
+      			<img id ="7" src="Producto/ps1.jpg" alt="Batman Arkham" >
    				 <figcaption>PS3 Batman Arkham City</figcaption>
    				 <figcaption>Q.199.00</figcaption>
    			 </figure>
 	
 			<figure class="responsive">
-      			<img src="Producto/ps2.jpg" alt="Crysis 2" >
+      			<img id ="8" src="Producto/ps2.jpg" alt="Crysis 2" >
    				 <figcaption>PS3 Crysis 2</figcaption>
    				 <figcaption>Q.150.00</figcaption>
    			 </figure>
 
 			<figure class="responsive">
-      			<img src="Producto/ps3.jpg" alt="Tomb Raider" >
+      			<img id ="9" src="Producto/ps3.jpg" alt="Tomb Raider" >
    				 <figcaption>PS3 Tomb Raider</figcaption>
    				 <figcaption>Q.250.00</figcaption>
    			 </figure>
 
 			<figure class="responsive">
-      			<img src="Producto/ps4.jpg" alt="Uncharted 3" >
+      			<img id ="10" src="Producto/ps4.jpg" alt="Uncharted 3" >
    				 <figcaption>PS3 Uncharted 3</figcaption>
    				 <figcaption>Q.200.00</figcaption>
    			 </figure>
 
 			<figure class="responsive">
-      			<img src="Producto/ps5.jpg" alt="The Last Of Us" >
+      			<img id ="11" src="Producto/ps5.jpg" alt="The Last Of Us" >
    				 <figcaption>PS3 The Last Of Us</figcaption>
    				 <figcaption>Q.400.00</figcaption>
    			 </figure>
 
    			 <figure class="responsive">
-      			<img src="Producto/ps6.jpg" alt="Mortal Kombat X" >
+      			<img id ="12" src="Producto/ps6.jpg" alt="Mortal Kombat X" >
    				 <figcaption>PS3 Mortal Kombat X</figcaption>
    				 <figcaption>Q.275.00</figcaption>
    			 </figure> 
 		
 	</article>
-	<nav>
+	<nav id="carrito" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <figure>
 		<img src="compra.png"  id="compra">
+      </figure>
 	</nav>
-
-	
+        <footer id="resultado"></footer> 
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="Menu.js"></script>
 </body>
 </html>
