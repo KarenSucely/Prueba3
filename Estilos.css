@@ -2,7 +2,9 @@
 	margin: 0;
 	padding:0;
 }
-
+#viewport{
+width: 100%;
+}
 
 header{
 	width: 100%; /*Toma toda la pantalla ancho*/
