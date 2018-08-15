@@ -77,7 +77,7 @@ footer nav img{
 
 @media screen and (max-width: 900px) {
 	#viewport{
-		width: 90%;
+		width: 50%;
 	}
 	header nav {
 		width: 60%;	
