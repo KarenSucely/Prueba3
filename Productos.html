@@ -16,6 +16,41 @@
       //draggable = "true" --> Elemento pueda moverse
       //ondrastar --> llama a la funcion drop(event)
       //ondragover --> llama a la funcion allowDrop(event)
+	function touchHandler(event)
+{
+    var touches = event.changedTouches,
+        first = touches[0],
+        type = "";
+
+         switch(event.type)
+    {
+        case "touchstart": type = "mousedown"; break;
+        case "touchmove":  type="mousemove"; break;        
+        case "touchend":   type="mouseup"; break;
+        default: return;
+    }
+
+    // initMouseEvent(type, canBubble, cancelable, view, clickCount,
+    //                screenX, screenY, clientX, clientY, ctrlKey,
+    //                altKey, shiftKey, metaKey, button, relatedTarget);
+
+    var simulatedEvent = document.createEvent("MouseEvent");
+    simulatedEvent.initMouseEvent(type, true, true, window, 1,
+                              first.screenX, first.screenY,
+                              first.clientX, first.clientY, false,
+                              false, false, false, 0/*left*/, null);
+
+                                                                                 first.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init()
+{
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);    
+}
       function drag(ev) {
       //establece el tipo de dato y valor del elemento capturado, en este caso el valor del atributo id
          ev.dataTransfer.setData("text", ev.target.id); 
@@ -67,11 +102,11 @@
    </script>
 </head>
 <body id="viewport">
-	<header>
+	<header data-role="header">
 		<div class="Menu_bar">
 			<a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
 		</div>
-		<nav>
+		<nav data-role="nav">
 			<ul>
 				<li><a href="index.html"><span class="icon-home"></span>Inicio</a></li>
 				<li><a class="active" href="Productos.html"><span class="icon-price-tags"></span>Productos</a></li>
