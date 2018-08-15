@@ -1,0 +1,5 @@
+---------------------PÁGINAS DE ETIQUETAS MOVER IMAGENES---------------------------------
+https://www.w3schools.com/html/html5_draganddrop.asp
+https://www.w3schools.com/html/html5_webstorage.asp
+https://www.html5rocks.com/es/tutorials/dnd/basics/#toc-creating-dnd-content
+https://www.w3schools.com/css/css_image_gallery.asp
