@@ -6,7 +6,6 @@
 	<link rel="stylesheet"  href="Fonts.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>INICIO</title>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
@@ -38,7 +37,23 @@ El nivel microestructural o local está asociado con el concepto de cohesión. S
 		</p>
 
 	</section>
-	
-	<script src="Menu.js"></script>
+	<script>
+		var contador = 1;
+		$(".icon-menu").click(
+			function main() {
+				$('.Menu_bar').click(function()
+				{
+			   		 if (contador==1) 
+					 {
+						$('nav').animate({left: '0'});
+						contador=0;
+			     		  }else{
+						contador=1;
+						$('nav').animate({left: '-100%'});
+			    		}
+				});
+		};
+		
+	</script>
 </body>
 </html>
