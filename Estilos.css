@@ -76,9 +76,6 @@ footer nav img{
 }
 
 @media screen and (max-width: 700px) {
-	body{
-	width: 100%;
-	}
 	header nav {
 		width: 40%;	
 		height: 100%;
