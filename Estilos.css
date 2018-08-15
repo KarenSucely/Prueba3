@@ -2,7 +2,7 @@
 	margin: 0;
 	padding:0;
 }
-#viewport{
+.viewport{
 width: 100%;
 }
 
@@ -76,7 +76,7 @@ footer nav img{
 }
 
 @media screen and (max-width: 900px) {
-	#viewport{
+	.viewport{
 		width: 90%;
 	}
 	header nav {
